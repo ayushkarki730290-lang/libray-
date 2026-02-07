@@ -1,6 +1,7 @@
 #include<iostream>
 #include<string.h>
 #include<stdlib.h>
+using namespace std;
 
 class library{
 public:
@@ -12,12 +13,12 @@ int page;
 };
 
 int main(){
-library lb[20];
+library lib[20];
 int input=0;
 int count =0;
 
 while(input!=3){
- cout<<"enter 1 to enter detail like id,name, author,price,page"<<endl;
+cout<<"enter 1 to enter detail like id,name, author,price,page"<<endl;
 cout<<"enter 2 to display detail"<<endl;
 cout<<"enter 3 to quit"<<endl;
 
@@ -25,7 +26,10 @@ cin>>input;
 
 switch(input){
 case 1:
-start;
+ if(count>20){
+    cout<<"library is full";
+ }
+ 
 cout<<"enter the book id";
 cin>>lib[count].id;
 cout<<"enter the name ";
@@ -34,11 +38,15 @@ cout<<"enter the authour";
 cin>>lib[count].authour;
 cout<<"enter the price";
 cin>>lib[count].price;
-cout<<"enter the page;
+cout<<"enter the page";
 cin>>lib[count].page;
 break;
 
 case 2:
+if(count==0){
+    cout<<"library is empty";
+
+}
 for(int i =0;i<count;i++){
 cout<<"book id"<<lib[count].id;
 cout<<"name"<<lib[count].name;
@@ -56,6 +64,7 @@ break;
 
 default:
 
-goto start;
+cout<<"invalid";
+}
 }
 }
