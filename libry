@@ -1,70 +1,76 @@
-#include<iostream>
-#include<string.h>
-#include<stdlib.h>
+#include <iostream>
+#include <string>
 using namespace std;
 
-class library{
+class Library {
 public:
-int id;
-char name;
-char authour;
-int price;
-int page;
+    int id;
+    string name;
+    string author;
+    int price;
+    int page;
 };
 
-int main(){
-library lib[20];
-int input=0;
-int count =0;
+int main() {
+    Library lb[20];
+    int input = 0;
+    int count = 0;
 
-while(input!=3){
-cout<<"enter 1 to enter detail like id,name, author,price,page"<<endl;
-cout<<"enter 2 to display detail"<<endl;
-cout<<"enter 3 to quit"<<endl;
+    while (input != 3) {
+        cout << "\nEnter 1 to add book details" << endl;
+        cout << "Enter 2 to display book details" << endl;
+        cout << "Enter 3 to quit" << endl;
 
-cin>>input;
+        cin >> input;
 
-switch(input){
-case 1:
- if(count>20){
-    cout<<"library is full";
- }
- 
-cout<<"enter the book id";
-cin>>lib[count].id;
-cout<<"enter the name ";
-cin>>lib[count].name;
-cout<<"enter the authour";
-cin>>lib[count].authour;
-cout<<"enter the price";
-cin>>lib[count].price;
-cout<<"enter the page";
-cin>>lib[count].page;
-break;
+        switch (input) {
 
-case 2:
-if(count==0){
-    cout<<"library is empty";
+        case 1:
+            if (count >= 20) {
+                cout << "Library is full!" << endl;
+                break;
+            }
+            cout << "Enter Book ID: ";
+            cin >> lb[count].id;
 
-}
-for(int i =0;i<count;i++){
-cout<<"book id"<<lib[count].id;
-cout<<"name"<<lib[count].name;
-cout<<"author"<<lib[count].authour;
-cout<<"price"<<lib[count].price;
-cout<<"page"<<lib[count].page;
-}
-break;
+            cout << "Enter Book Name: ";
+            cin >> lb[count].name;
 
+            cout << "Enter Author Name: ";
+            cin >> lb[count].author;
 
-case 3:
-exit(0);
-break;
+            cout << "Enter Price: ";
+            cin >> lb[count].price;
 
+            cout << "Enter Pages: ";
+            cin >> lb[count].page;
 
-default:
+            count++;
+            break;
 
-cout<<"invalid";
-}
-}
+        case 2:
+            if (count == 0) {
+                cout << "No books to display!" << endl;
+            } else {
+                for (int i = 0; i < count; i++) {
+                    cout << "\nBook " << i + 1 << endl;
+                    cout << "ID: " << lb[i].id << endl;
+                    cout << "Name: " << lb[i].name << endl;
+                    cout << "Author: " << lb[i].author << endl;
+                    cout << "Price: " << lb[i].price << endl;
+                    cout << "Pages: " << lb[i].page << endl;
+                }
+            }
+            break;
+
+        case 3:
+            cout << "Exiting program..." << endl;
+            break;
+
+        default:
+            cout << "Invalid choice!" << endl;
+        }
+    }
+
+    return 0;
 }
